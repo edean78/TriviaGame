@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body{
+    background-image: url("https://cdn.wallpapersafari.com/47/38/aMl9pI.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.jumbotron {
+    background-color: black;
+    color: silver;
+}
+
+#dawg-image{
+    height: 125px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
