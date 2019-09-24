@@ -1,17 +1,18 @@
 * {
     box-sizing: border-box;
-    text-align: center;
 }
 
 body{
     background-image: url("https://cdn.wallpapersafari.com/47/38/aMl9pI.png");
     background-size: cover;
     background-repeat: no-repeat;
+    text-align: center;
 }
 
 .jumbotron {
     background-color: black;
     color: silver;
+    padding-bottom: 10px;
 }
 
 #dawg-image{
@@ -28,4 +29,15 @@ p {
 .card {
     background-color: black;
     color: silver;
+}
+
+#app {
+    text-align: left;
+}
+
+.choice {
+    border: 1px solid red;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
 }
