@@ -31,9 +31,19 @@ var question = [
         choices: ["Richard Seymour", "Jonathan Sullivan", "Charles Grant", "Jarvus Jones", "David Pollack"],
         correctAnswer: "David Pollack"
     }
+];
 
-]
+// Create the varibles needed for the game
+var corrAnswers = 0;
+var missedAnswers = 0;
+var timeCounter = 30;
+var curQuestion = 0;
+var timer = ;
+-
+// Display question and answers
 
+// Restart game
 
+// Create game logic
     
 });
