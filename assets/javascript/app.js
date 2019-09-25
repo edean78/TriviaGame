@@ -49,14 +49,15 @@ $(document).ready(function () {
     displayQuestion();
 
     // Create function to move to next question
-    function nextQuest(){
-        
+    function nextQuest() {
+
         var isQuestfinished = (triviaQuestions.length - 1) === curQuestion;
 
-        if (isQuestfinished){
+        if (isQuestfinished) {
+            results();
         } else {
-          curQuestion ++;
-        displayQuestion();  
+            curQuestion++;
+            displayQuestion();
         }
     }
 
@@ -74,7 +75,7 @@ $(document).ready(function () {
     }
     // Display the questions
     function displayQuestion() {
-        timeCounter = 5;
+        timeCounter = 30;
         time = setInterval(countDown, 1000)
 
         var quest = triviaQuestions[curQuestion].question;
@@ -101,21 +102,40 @@ $(document).ready(function () {
 
     // Create a on click function to handle correct or incorrect answers
 
-    $(document).on("click", ".choice", function(){
+    $(document).on("click", ".choice", function () {
+        clearInterval(time);
         var userChoice = $(this).attr("data-guess");
         var corAnswer = triviaQuestions[curQuestion].correctAnswer;
-        if (userChoice === corAnswer){
+        if (userChoice === corAnswer) {
             corrAnswers++;
-            console.log("You win!!!")
+            nextQuest();
         } else {
             missedAnswers++
-            console.log("You Lost!!!")
+            nextQuest();
         };
-    
-})
-    // Start game
+    });
 
-    // Create game logic
+    // Create a function to display the results of the game
+    function results() {
+        var result = `
+        <h4>You correctly answered ${corrAnswers} questions</h4>
+        <h4>You missed ${missedAnswers} questions</h4>
+        <h4>The total number of question ${triviaQuestions.length}</h4>
+        <button id="reset-button">Reset Game</button>
+        `;
 
+        $("#app").html(result);
+    };
+
+    // create an on click function that resets the game
+    $(document).on("click", "#reset-button", function(){
+        curQuestion = 0;
+        corrAnswers = 0;
+        missedAnswers = 0;
+        timeCounter = 30;
+        time ;
+
+        displayQuestion();
+    })
 
 });
