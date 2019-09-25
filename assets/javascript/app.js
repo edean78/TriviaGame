@@ -51,13 +51,9 @@ $(document).ready(function () {
     ];
 
     // Create the varibles needed for the game
-    // varible to hold the correct answers
     var corrAnswers = 0;
-    // varible to hold the missed answers
     var missedAnswers = 0;
-    // varible to hold the time to answer a question
     var timeCounter = 30;
-    // varible to hold the current question
     var curQuestion = 0;
     var time;
 
@@ -124,10 +120,11 @@ $(document).ready(function () {
         var corAnswer = triviaQuestions[curQuestion].correctAnswer;
         if (userChoice === corAnswer) {
             corrAnswers++;
-            nextQuest();
+            loadMessage("correct")
+            setTimeout(nextQuest, 4000);
         } else {
             missedAnswers++
-            nextQuest();
+            setTimeout(nextQuest, 4000);
         };
     });
 
@@ -136,7 +133,7 @@ $(document).ready(function () {
         var result = `
         <h4>You correctly answered ${corrAnswers} questions</h4>
         <h4>You missed ${missedAnswers} questions</h4>
-        <h4>The total number of question ${triviaQuestions.length}</h4>
+        <h4>The total number of question is ${triviaQuestions.length}</h4>
         <button id="reset-button">Reset Game</button>
         `;
 
@@ -152,6 +149,24 @@ $(document).ready(function () {
         time ;
 
         displayQuestion();
-    })
+    });
+
+    // Display a message after each question informing the user if they answered the question correctly of incorrectly
+    function loadMessage(answer){
+        var correctAnswer = triviaQuestions[curQuestion].correctAnswer
+
+        if (answer === correctAnswer){
+            $("#app").html(`
+                <p class="load-message">You ansered to question correctly!!</p>
+                <p class="load-message">The correct answer is ${correctAnswer}</p>
+            `)
+        } else {
+            $("#app").html(`
+                <p class="load-message">You ansered to question incorrectly!!</p>
+                <p class="load-message">The correct answer is ${correctAnswer}</p>
+            `)
+        }
+            
+    };
 
 });

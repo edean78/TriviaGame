@@ -48,6 +48,6 @@ h4 {
     cursor: pointer;
 }
 
-#reset-button {
-    
+.load-message {
+    text-align: center;
 }
