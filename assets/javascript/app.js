@@ -48,25 +48,16 @@ $(document).ready(function () {
 
     displayQuestion();
 
-    //Create a function to start the game
-    // $("#dawg-image").on("click", function () {
-    //     displayQuestion();
-    // }
-
     // Create function to move to next question
-
     function nextQuest(){
         
         var isQuestfinished = (triviaQuestions.length - 1) === curQuestion;
 
         if (isQuestfinished){
-
         } else {
           curQuestion ++;
         displayQuestion();  
         }
-
-        
     }
 
     // Create function to make the timer countdown.
@@ -108,6 +99,20 @@ $(document).ready(function () {
 
     }
 
+    // Create a on click function to handle correct or incorrect answers
+
+    $(document).on("click", ".choice", function(){
+        var userChoice = $(this).attr("data-guess");
+        var corAnswer = triviaQuestions[curQuestion].correctAnswer;
+        if (userChoice === corAnswer){
+            corrAnswers++;
+            console.log("You win!!!")
+        } else {
+            missedAnswers++
+            console.log("You Lost!!!")
+        };
+    
+})
     // Start game
 
     // Create game logic
