@@ -57,8 +57,12 @@ $(document).ready(function () {
     var curQuestion = 0;
     var time;
 
-
-    displayQuestion();
+    // Create a function to start the game when the UGA image is clicked
+    $("#dawg-image").click(function(){
+        $("#dawg-image").remove();
+        $("#timer").html(timeCounter);
+        displayQuestion();
+    })
 
     // Create function to move to next question
     function nextQuest() {
