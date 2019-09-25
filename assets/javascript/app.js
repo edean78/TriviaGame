@@ -43,21 +43,49 @@ $(document).ready(function () {
     var timeCounter = 30;
     // varible to hold the current question
     var curQuestion = 0;
-    var time ;
+    var time;
 
-    // Display the questions
+
     displayQuestion();
 
-    function countDown() {
-        timeCounter --;
+    //Create a function to start the game
+    // $("#dawg-image").on("click", function () {
+    //     displayQuestion();
+    // }
 
-        $("#timer").html(`Time left: ${timeCounter}`);
+    // Create function to move to next question
+
+    function nextQuest(){
+        
+        var isQuestfinished = (triviaQuestions.length - 1) === curQuestion;
+
+        if (isQuestfinished){
+
+        } else {
+          curQuestion ++;
+        displayQuestion();  
+        }
+
+        
     }
 
+    // Create function to make the timer countdown.
+    function countDown() {
+        timeCounter--;
+
+        $("#timer").html(`Time left: ${timeCounter}`);
+
+        if (timeCounter === 0) {
+            clearInterval(time);
+            missedAnswers++;
+            nextQuest();
+        }
+    }
+    // Display the questions
     function displayQuestion() {
-        timeCounter = 30;
+        timeCounter = 5;
         time = setInterval(countDown, 1000)
-        
+
         var quest = triviaQuestions[curQuestion].question;
         var guess = triviaQuestions[curQuestion].choices;
 
@@ -79,6 +107,7 @@ $(document).ready(function () {
         return result;
 
     }
+
     // Start game
 
     // Create game logic

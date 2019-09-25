@@ -21,9 +21,15 @@ body{
     padding-bottom: 10px;
 }
 
-p {
-    margin: 0;
-    padding: 0;
+p.choice{
+    padding: 10px;
+    margin: 10px
+}
+
+h4 {
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
 }
 
 .card {
