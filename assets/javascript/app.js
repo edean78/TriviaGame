@@ -43,7 +43,7 @@ $(document).ready(function () {
     ];
 
     // Create an array of the gif images to be displayed when the user answers a question incorrectly
-    var loseImages = [
+    var lostImages = [
         "https://media.giphy.com/media/GDnomdqpSHlIs/giphy.gif",
         "https://media.giphy.com/media/13ywPzPJdfhmBG/giphy.gif",
         "https://media.giphy.com/media/wsab8KPaE3ojlWOaKh/giphy.gif",
@@ -82,7 +82,8 @@ $(document).ready(function () {
         if (timeCounter === 0) {
             clearInterval(time);
             missedAnswers++;
-            nextQuest();
+            loadMessage("incorrect");
+            setInterval(nextQuest, 3000);
         }
     }
     // Display the questions
@@ -121,10 +122,11 @@ $(document).ready(function () {
         if (userChoice === corAnswer) {
             corrAnswers++;
             loadMessage("correct")
-            setTimeout(nextQuest, 4000);
+            setTimeout(nextQuest, 3000);
         } else {
             missedAnswers++
-            setTimeout(nextQuest, 4000);
+            loadMessage("incorrect")
+            setTimeout(nextQuest, 3000);
         };
     });
 
@@ -151,19 +153,28 @@ $(document).ready(function () {
         displayQuestion();
     });
 
+    // Create function to select gif image from array
+    function selImage(image){
+        var ranImage = Math.floor(Math.random() * image.length);
+        var selectedImage = image[ranImage];
+        return selectedImage;
+    };
+
     // Display a message after each question informing the user if they answered the question correctly of incorrectly
     function loadMessage(answer){
-        var correctAnswer = triviaQuestions[curQuestion].correctAnswer
+        var correctAnswer = triviaQuestions[curQuestion].correctAnswer;
 
-        if (answer === correctAnswer){
+        if (answer === "correct"){
             $("#app").html(`
-                <p class="load-message">You ansered to question correctly!!</p>
+                <p class="load-message">You anwsered the question correctly!!</p>
                 <p class="load-message">The correct answer is ${correctAnswer}</p>
+                <img id="funny-images" src="${selImage(winImages)}" />
             `)
         } else {
             $("#app").html(`
-                <p class="load-message">You ansered to question incorrectly!!</p>
+                <p class="load-message">You answered the question incorrectly!!</p>
                 <p class="load-message">The correct answer is ${correctAnswer}</p>
+                <img id="funny-images" src="${selImage(lostImages)}"/>
             `)
         }
             
