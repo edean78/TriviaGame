@@ -34,6 +34,22 @@ $(document).ready(function () {
         }
     ];
 
+    // Create an array of the gif images to be displayed when user answers a question correctly
+    var winImages = [
+        "https://media.giphy.com/media/XbCXthwx7BrxKszKzn/giphy.gif",
+        "https://media.giphy.com/media/6FFDLMaq1WD7O/giphy.gif",
+        "https://media.giphy.com/media/xUOxeV6Xe1YtXKNJkY/giphy.gif",
+        "https://media.giphy.com/media/3GnhXD3vhlB2pnQG3n/giphy.gif"
+    ];
+
+    // Create an array of the gif images to be displayed when the user answers a question incorrectly
+    var loseImages = [
+        "https://media.giphy.com/media/GDnomdqpSHlIs/giphy.gif",
+        "https://media.giphy.com/media/13ywPzPJdfhmBG/giphy.gif",
+        "https://media.giphy.com/media/wsab8KPaE3ojlWOaKh/giphy.gif",
+        "https://media.giphy.com/media/9Hc5GrcxM452M/giphy.gif"
+    ];
+
     // Create the varibles needed for the game
     // varible to hold the correct answers
     var corrAnswers = 0;
